@@ -10,21 +10,18 @@
 			border-collapse: collapse;
 			padding: 5px;
 		}
-		table tr:nth-child(odd) {
-			background-color: #f1f1f1;
-		}
-		table tr:nth-child(even) {
-			background-color: #ffffff;
-		}
 	</style>
 </head>
 <body>
+	<!-- This file, part-02.html, is similar to 13-tables/index.html, except this has no Angular filters.
+	Also, CSS styling is added through ng-if directives. -->
 	<div ng-app="myApp" ng-controller="customersCtrl">
 		<table>
-			<tr ng-repeat="x in names | orderBy : 'Country'">
-				<td>{{ $index + 1 }}</td>
-				<td>{{ x.Name }}</td>
-				<td>{{ x.Country | uppercase }}</td>
+			<tr ng-repeat="x in names">
+				<td ng-if="$odd" style="background-color: #f1f1f1">{{ x.Name }}</td>
+				<td ng-if="$even">{{ x.Name }}</td>
+				<td ng-if="$odd" style="background-color: #f1f1f1">{{ x.Country }}</td>
+				<td ng-if="$even">{{ x.Country }}</td>
 			</tr>
 		</table>
 	</div>
