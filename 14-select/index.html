@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<!-- Dropdown menu made with ng-options. Allows selected value to be object  -->
+		<select ng-model="selectedName" ng-options="x for x in names"></select>
+		<!-- Dropdown menu made with ng-repeat. Selected value must be a string. -->
+		<!--<select>
+			<option ng-repeat="x in names">{{x}}</option>
+		</select>-->
+	</div>
+
+
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+			app.controller('myCtrl', function($scope){
+				$scope.names = ["Emil", "Tobias", "Linus"];
+			});
+	</script>
+</body>
+</html>
