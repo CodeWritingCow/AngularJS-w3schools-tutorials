@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular API</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<h1>angular.lowercase()</h1>
+		<p>{{ x1 }}</p>
+		<p>{{ x2 }}</p>
+		<hr>
+
+		<h1>angular.uppercase()</h1>
+		<p>{{ x3 }}</p>
+		<p>{{ x4 }}</p>
+		<hr>
+
+		<h1>angular.isString()</h1>
+		<p>Is {{ x3 }} a string?</p>
+		<p>Answer: {{ x5 }}</p>
+		<hr>
+
+		<h1>angular.isNumber()</h1>
+		<p>Is {{ x3 }} a number?</p>
+		<p>Answer: {{ x6 }}</p>		
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+			app.controller('myCtrl', function($scope){
+				$scope.x1 = 'JOHN';
+				$scope.x2 = angular.lowercase($scope.x1);
+				$scope.x3 = 'John';
+				$scope.x4 = angular.uppercase($scope.x3);
+				$scope.x5 = angular.isString($scope.x3);
+				$scope.x6 = angular.isNumber($scope.x3);
+			});
+	</script>
+</body>
+</html>
