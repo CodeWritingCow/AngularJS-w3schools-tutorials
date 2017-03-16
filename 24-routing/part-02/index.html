@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Routing</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+
+	<base href="/">
+</head>
+<body ng-app="myApp">
+
+	<p><a href="/">Main</a></p>
+
+	<a href="london">City 1</a>
+	<a href="paris">City 2</a>	
+	<div ng-view></div>
+
+	<script>
+		var app = angular.module('myApp', ['ngRoute']);
+			app.config(function($routeProvider, $locationProvider) {
+				$routeProvider
+				.when('/', {
+					templateUrl: 'main.htm'
+				})
+				.when('/london', {
+					templateUrl: 'pages/london.htm',
+					controller: 'londonCtrl'
+				})
+				.when('/paris', {
+					templateUrl: 'pages/paris.htm',
+					controller: 'parisCtrl'
+				});
+
+				$locationProvider.html5Mode(true);				
+			});
+
+			app.controller('londonCtrl', function($scope){
+				$scope.msg = "I love London!";
+			});
+
+			app.controller('parisCtrl', function($scope){
+				$scope.msg = "I love Paris!";
+			});
+	</script>
+</body>
+</html>
