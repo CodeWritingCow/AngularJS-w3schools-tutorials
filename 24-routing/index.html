@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Routing</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+
+	<!-- Define base href as '/'  -->
+	<base href="/">
+</head>
+
+<body ng-app="myApp">
+	<p><a href="/">Main</a></p>
+
+	<!-- Original tutorial uses <a href="#color">. Didn't work for me. -->
+	<a href="red">Red</a>
+	<a href="green">Green</a>
+	<a href="blue">Blue</a>
+
+	<div ng-view></div>
+
+	<script type="text/javascript">
+		var app = angular.module('myApp', ['ngRoute']);
+
+			// Include $locationProvider to remove hashtags from URLs
+			app.config(function($routeProvider, $locationProvider) {
+				$routeProvider
+				.when('/', {
+					templateUrl : "main.htm"
+				})
+				.when('/red', {
+					templateUrl: "pages/red.htm"
+				})
+				.when('/green', {
+					templateUrl: "pages/green.htm"
+				})
+				.when('/blue', {
+					templateUrl: "pages/blue.htm"
+				});
+
+				// Use HTML History API
+				$locationProvider.html5Mode(true);
+			});
+	</script>
+
+</body>
+</html>
